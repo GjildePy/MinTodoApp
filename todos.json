@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "title": "Absolutt",
+        "tasks": [
+            {
+                "text": "Spinne hodet",
+                "done": false
+            }
+        ]
+    }
+]
