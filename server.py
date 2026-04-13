@@ -47,6 +47,7 @@ def create_todo():
     new_entry = {
         "id": new_id,
         "title": new_data.get("title"),
+        "description": new_data.get("description", ""), # Lagt til for tekstnotat
         "tasks": new_data.get("tasks", [])
     }
     

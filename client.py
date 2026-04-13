@@ -23,6 +23,7 @@ def hent_en():
     if res.status_code == 200:
         todo = res.json()
         print(f"\nTittel: {todo['title']}")
+        print(f"Notat: {todo.get('description', 'Ingen tekstnotat')}") # Viser tekstnotatet
         print("Oppgaver:")
         for t in todo['tasks']:
             status = "[x]" if t['done'] else "[ ]"
@@ -32,6 +33,7 @@ def hent_en():
 
 def opprett_ny():
     tittel = input("Tittel: ")
+    beskrivelse = input("Skriv et tekstnotat (valgfritt): ") # Spør om tekstnotat
     oppgaver = []
     print("Legg til oppgaver (tom linje for å stoppe):")
     while True:
@@ -39,7 +41,11 @@ def opprett_ny():
         if not tekst: break
         oppgaver.append({"text": tekst, "done": False})
     
-    payload = {"title": tittel, "tasks": oppgaver}
+    payload = {
+        "title": tittel, 
+        "description": beskrivelse, # Sender med tekstnotatet
+        "tasks": oppgaver
+    }
     res = requests.post(BASE_URL, json=payload)
     print(f"Notat opprettet! ID: {res.json()['id']}")
 
