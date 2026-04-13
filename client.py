@@ -1,6 +1,6 @@
 import requests
 
-BASE_URL = "http://127.0.0.1:5000/todos"
+BASE_URL = "http://192.168.20.45:5000/todos"
 
 def vis_meny():
     print("\n--- TODO KLIENT ---")
