@@ -9,8 +9,14 @@ DB_FILE = 'todos.json'
 def load_data():
     if not os.path.exists(DB_FILE):
         return []
-    with open(DB_FILE, 'r') as f:
-        return json.load(f)
+    try:
+        with open(DB_FILE, 'r') as f:
+            content = f.read()
+            if not content: # Sjekker om filen er helt tom
+                return []
+            return json.loads(content)
+    except json.JSONDecodeError: # Fikser krasj hvis JSON-formatet er feil
+        return []
 
 # Hjelpefunksjon for å lagre til JSON-filen
 def save_data(data):
