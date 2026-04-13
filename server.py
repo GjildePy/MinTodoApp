@@ -62,5 +62,5 @@ def create_todo():
     return jsonify({"message": "Notat opprettet", "id": new_id}), 201
 
 if __name__ == '__main__':
-    # Vi kjører serveren på port 5000
-    app.run(debug=True, port=5000)
+    # host='0.0.0.0' gjør at serveren svarer på Proxmox-IP-en din
+    app.run(debug=True, host='0.0.0.0', port=5000)
